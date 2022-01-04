@@ -17,6 +17,10 @@ module BudgetUpdateScript
       @category = 'Income' if @amount > 0
     end
 
+    def to_csv
+      "#{date.strftime("%m/%d/%Y")},#{description},#{amount},#{category}"
+    end
+
     def self.extract_from(transaction_string)
       data = CSV.parse(transaction_string)
       @@fields = data.first

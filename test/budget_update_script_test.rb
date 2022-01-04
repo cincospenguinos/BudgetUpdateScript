@@ -1,4 +1,5 @@
 require "test_helper"
+require 'csv'
 
 class BudgetUpdateScriptTest < Minitest::Test
 
@@ -17,6 +18,11 @@ class BudgetUpdateScriptTest < Minitest::Test
     "01/25/2020","Anytime Checking","Big Flaming Turds R Us","Uncategorized Expense","","100",""
     "01/24/2020","Anytime Checking","2449215D7MJG4NP36 SQ *BLACKS SLIDERS, SALT LAKE CIT UT","Uncategorized Expense","","","-14.23"
   transaction
+
+  END_RESULT = <<~res
+  01/24/2020,2449215D7MJG4NP36 SQ *BLACKS SLIDERS, SALT LAKE CIT UT,-14.23,
+  01/25/2020,Big Flaming Turds R Us,100.0,Income
+  res
 
   def test_transaction_extraction_works_properly
     transactions = BudgetUpdateScript::TransactionExtraction.extract_from(SINGLE_TRANSACTION)
@@ -41,5 +47,10 @@ class BudgetUpdateScriptTest < Minitest::Test
   def test_transactions_sorts_by_date
     transactions = BudgetUpdateScript::TransactionExtraction.extract_from(TWO_TRANSACTIONS)
     assert transactions.first.date < transactions.last.date
+  end
+
+  def test_transactions_output_formatted_csv
+    transaction_csv = BudgetUpdateScript.convert(TWO_TRANSACTIONS)
+    assert_equal END_RESULT.chomp, transaction_csv
   end
 end
