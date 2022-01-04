@@ -1,28 +1,8 @@
 # BudgetUpdateScript
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/budget_update_script`. To experiment with that code, run `bin/console` for an interactive prompt.
+I hacked this shitty little script together because I was tired of having to manually modify my transactions every time I downloaded them from my bank. Theoretically you can take any transaction data and export it as CSV and it'll handle it, but I don't know for sure. I don't really care. This is really just for me but I'm sharing it because people may want to use it.
 
-TODO: Delete this and the text above, and describe your gem
-
-## Installation
-
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'budget_update_script'
-```
-
-And then execute:
-
-    $ bundle install
-
-Or install it yourself as:
-
-    $ gem install budget_update_script
-
-## Usage
-
-TODO: Write usage instructions here
+Also I wrote this at like 4 in the morning on a Tuesday because I ordered decaf and the barista gave me a double shot of espresso instead. The bastard.
 
 ## Development
 

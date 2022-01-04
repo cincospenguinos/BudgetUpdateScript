@@ -1,0 +1,10 @@
+#!/usr/bin/env ruby
+require 'budget_update_script'
+
+unless ARGV.size == 1
+  puts 'Usage: ./budget_update_script <input_file>'
+  exit 1
+end
+
+contents = File.read(ARGV[0])
+puts BudgetUpdateScript.convert(contents)
