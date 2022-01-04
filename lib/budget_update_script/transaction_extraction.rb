@@ -20,7 +20,9 @@ module BudgetUpdateScript
     def self.extract_from(transaction_string)
       data = CSV.parse(transaction_string)
       @@fields = data.first
-      data[1...(data.size)].map { |row| TransactionExtraction.new(row) }
+      data[1...(data.size)]
+        .map { |row| TransactionExtraction.new(row) }
+        .sort { |a, b| a.date <=> b.date }
     end
 
     private
