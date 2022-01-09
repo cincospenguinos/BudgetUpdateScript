@@ -20,7 +20,7 @@ class BudgetUpdateScriptTest < Minitest::Test
   transaction
 
   END_RESULT = <<~res
-  01/24/2020,2449215D7MJG4NP36 SQ *BLACKS SLIDERS, SALT LAKE CIT UT,-14.23,
+  01/24/2020,2449215D7MJG4NP36 SQ *BLACKS SLIDERS, SALT LAKE CIT UT,14.23,
   01/25/2020,Big Flaming Turds R Us,100.0,Income
   res
 
@@ -34,7 +34,7 @@ class BudgetUpdateScriptTest < Minitest::Test
 
     assert_equal  Date.strptime("01/24/2020", "%m/%d/%Y"), transaction.date
     assert_equal '', transaction.category
-    assert_equal (-14.23), transaction.amount
+    assert_equal (14.23), transaction.amount
     assert_equal '2449215D7MJG4NP36 SQ *BLACKS SLIDERS, SALT LAKE CIT UT', transaction.description
   end
 

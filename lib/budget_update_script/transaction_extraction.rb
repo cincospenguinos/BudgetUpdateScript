@@ -15,6 +15,7 @@ module BudgetUpdateScript
 
       @category = ''
       @category = 'Income' if @amount > 0
+      @amount = @amount.abs
     end
 
     def to_csv
